@@ -4,6 +4,8 @@ import com.icodeap.ecommerce.application.repository.ProductRepository;
 import com.icodeap.ecommerce.domain.Product;
 import com.icodeap.ecommerce.domain.User;
 
+
+//@Service
 public class ProductService  implements ProductRepository{
 
     private final ProductRepository productRepository;
