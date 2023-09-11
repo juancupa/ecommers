@@ -3,39 +3,52 @@ package com.icodeap.ecommerce.infrastructure.adapter;
 import com.icodeap.ecommerce.application.repository.ProductRepository;
 import com.icodeap.ecommerce.domain.Product;
 import com.icodeap.ecommerce.domain.User;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.icodeap.ecommerce.infrastructure.mapper.ProductMapper;
+import com.icodeap.ecommerce.infrastructure.mapper.UserMapper;
+
 import org.springframework.stereotype.Repository;
 
 
-@AllArgsConstructor
+
 @Repository
+
 public class ProdctRepositoryImpl implements ProductRepository {
+    private final  ProductCruddRepository productCruddRepository;
+    private final ProductMapper productMapper;
+    private final UserMapper userMapper;
 
+    public ProdctRepositoryImpl(ProductCruddRepository productCruddRepository, ProductMapper productMapper, UserMapper userMapper) {
+        this.productCruddRepository = productCruddRepository;
+        this.productMapper = productMapper;
+        this.userMapper = userMapper;
+    }
 
-    private final ProductCruddRepository productCruddRepository;
     @Override
     public Iterable<Product> getProducts() {
-        return null;
+
+        return productMapper.toProducts(productCruddRepository.findAll());
     }
 
     @Override
     public Iterable<Product> getProductByUser(User user) {
-        return null;
+
+        return productMapper.toProducts(productCruddRepository.findByUserEntity(userMapper.toUserEntity(user)));
     }
 
     @Override
     public Product getProductById(Integer id) {
-        return null;
+
+        return productMapper.toProduct(productCruddRepository.findById(id).get());
     }
 
     @Override
     public Product saveProduct(Product product) {
-        return null;
+        return  productMapper.toProduct(productCruddRepository.save(productMapper.toProductEntity(product)));
+
     }
 
     @Override
     public void deleteProductById(Integer id) {
-
+        productCruddRepository.deleteById(id);
     }
 }
