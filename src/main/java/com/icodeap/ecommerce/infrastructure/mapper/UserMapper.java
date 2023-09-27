@@ -10,7 +10,7 @@ public interface UserMapper {
 
     @Mappings({
             @Mapping(source = "id", target = "id"),
-            @Mapping(source = "userName", target = "userName"),
+            @Mapping(source = "username", target = "username"),
             @Mapping(source = "firstName", target = "firstName"),
             @Mapping(source = "lastName", target = "lastName"),
             @Mapping(source = "email", target = "email"),

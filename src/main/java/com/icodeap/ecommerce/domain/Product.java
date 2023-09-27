@@ -11,13 +11,13 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 public class Product {
-
     private Integer id;
-    private String code;
+    private  String code;
     private String name;
     private String description;
-    private  String image;
+    private String image;
     private BigDecimal price;
+
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
 
