@@ -2,7 +2,7 @@ package com.icodeap.ecommerce.application.repository;
 
 import com.icodeap.ecommerce.domain.Product;
 import com.icodeap.ecommerce.domain.User;
-
+import org.springframework.web.multipart.MultipartFile;
 
 
 public interface ProductRepository {
